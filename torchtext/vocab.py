@@ -351,10 +351,13 @@ class GloVe(Vectors):
 
 class FastText(Vectors):
 
-    url_base = 'https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.{}.vec'
+    url_bases = {
+        'v1': 'https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.{}.vec',
+        'v2': 'https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.{}.300.vec.gz'
+    }
 
-    def __init__(self, language="en", **kwargs):
-        url = self.url_base.format(language)
+    def __init__(self, language="en", version='v1', **kwargs):
+        url = self.url_bases[version].format(language)
         name = os.path.basename(url)
         super(FastText, self).__init__(name, url=url, **kwargs)
 
