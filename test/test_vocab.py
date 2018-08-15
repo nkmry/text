@@ -119,7 +119,7 @@ class TestVocab(TorchtextTestCase):
         for i in range(2):
             v = vocab.Vocab(c, min_freq=3, specials=['<unk>', '<pad>', '<bos>'],
                             vectors=Vectors('wiki.simple.vec',
-                                            url=FastText.url_base.format('simple')))
+                                            url=FastText.url_bases['v1'].format('simple')))
 
             self.assertEqual(v.itos, ['<unk>', '<pad>', '<bos>',
                                       'ᑌᑎIᑕOᗪᕮ_Tᕮ᙭T', 'hello', 'world'])
@@ -151,7 +151,7 @@ class TestVocab(TorchtextTestCase):
 
             v = vocab.Vocab(c, min_freq=3, specials=['<unk>', '<pad>', '<bos>'],
                             vectors=Vectors('wiki.simple.vec', cache=vector_cache,
-                                            url=FastText.url_base.format('simple')))
+                                            url=FastText.url_bases['v1'].format('simple')))
 
             self.assertEqual(v.itos, ['<unk>', '<pad>', '<bos>',
                                       'ᑌᑎIᑕOᗪᕮ_Tᕮ᙭T', 'hello', 'world'])
